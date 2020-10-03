@@ -18,53 +18,57 @@ setInterval(() => {
 
 var toDo = [];
 //in order to stop the page from reloading when the button is clicked, add default prevent
-var addToDo = (event) => {
+var addToDo = function (event, that) {
+    console.log(that)
+    console.log($(this));
     event.preventDefault(); //stopts from reloading
+    console.log(that.siblings("textarea").val())
     //create object
     var toDoEvent = {
 
         id: Date.now(), //method to give current time stamp
         //create properties of the object:
-        event: document.getElementById("event").value, //value of what event was added by user, values for the properties inside the object
+        //event: document.getElementById("event").value, //value of what event was added by user, values for the properties inside the object
     }
     //();
     toDo.push(toDoEvent);//ading event to the array of eventsC(created on top)
     //document.querySelector("div-since inside the div?").reset(); to clear the text for the next entry
-
+    localStorage.setItem("listToDo", JSON.stringify(toDo)); //take the array of events we are going to create = toDo, not the object. Add array to the local storage
 }
 //add it to local storage
-localStorage.setItem("listToDo", JSON.stringify(toDo)); //take the array of events we are going to create = toDo, not the object. Add array to the local storage
+$("button").on("click", function (event) {
+    console.log($(this))
+    var that = $(this);
+    addToDo(event, that);
+}) //() => addToDo(event))
 
 //add eventListeners first
-document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("button").addEventListener("click", addToDo);//whenever there's a click(any event) call the function based on that event
-    console.log("addToDo");
-}); //add function to add todo
-
-
+//document.addEventListener("DOMContentLoaded", () => {
+// console.log("test", document.querySelectorAll("button"))
+// document.querySelectorAll("button").addEventListener("click", addToDo);//whenever there's a click(any event) call the function based on that event
+// console.log("addToDo");
+//}); //add function to add toDo
 
 // WHEN I scroll down-THEN I am presented with timeblocks for standard business hours(8-5?)
-
 // WHEN I view the timeblocks for that day-THEN each timeblock is color coded to indicate whether it is in the past, present, or future
 
 var updateHourBlocks = function () {
     //use moments to get the current hour
     var currentHour = moment().hour();
 
-    // console.log(currentHour);
-
+    console.log(currentHour);
 
     //from homework:
     // loop over object properties
     //   $.each(tasks, function(list, arr) {
-    //     // then loop over sub-array
+    // then loop over sub-array
     //     arr.forEach(function(task) {
     //       createTask(task.text, task.date, list);
     //     });
+    //key value pairs?
 
-    //loop ob\ver all the timeblocks
+    //loop over all the timeblocks,(use for loop instead)?
     $(".time-block").each(function () {
-
         var hourInput = parseInt($(this).attr("id").split("-")[1]);
         //console.log(hourInput);
 
@@ -100,20 +104,17 @@ updateHourBlocks();
 //     var now = moment().hour();
 
 // }, 1000);
-
-
-
 // WHEN I click into a timeblock-THEN I can enter an event
-
 
 // WHEN I click the save button for that timeblock-THEN the text for that event is saved in local storage
 var saveToDo = function () {
     localStorage.setItem("toDo", JSON.stringify(toDo));
-    console.log(save);
+    console.log(saveToDo);
 };
 saveToDo();
 // saveToDo();
 // WHEN I refresh the page-THEN the saved events persist
 //loading input from local storage: timeblocks 
 $("#hour8 .description").val(localStorage.getItem("hour8"));
+$("#hour20 .description").val(localStorage.getItem("hour20"));
 //with 24 hour format or am-pm to display color?
