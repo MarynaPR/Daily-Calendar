@@ -13,7 +13,6 @@ setInterval(() => {
 
 }, 10000);
 
-
 //what the user writes values(id)->put inside the js object->
 
 var toDo = [];
@@ -40,7 +39,7 @@ $("button").on("click", function (event) {
     console.log($(this))
     var that = $(this);
     addToDo(event, that);
-}) //() => addToDo(event))
+})
 
 //add eventListeners first
 //document.addEventListener("DOMContentLoaded", () => {
@@ -74,20 +73,20 @@ var updateHourBlocks = function () {
 
         //past hour-connect to class"past/present/future css"
         if (hourInput < currentHour) {
-            $(this).attr("class", "past");
+            $(this).attr("class", "past row time-block");
 
             //.this-object that is executing current function
         } else if (hourInput === currentHour) {
 
             //add remove  attr for pastpresent hour
-            $(this).removeAttr("class", "past");
-            $(this).attr("class", "present");
+            $(this).removeAttr("class", "past row time-block");
+            $(this).attr("class", "present row-time block");
 
         } else {
             //add future/remove attr for past and present
-            $(this).removeAttr("class", "past");
-            $(this).removeAttr("class", "present");
-            $(this).attr("class", "future");
+            $(this).removeAttr("class", "past row time-block");
+            $(this).removeAttr("class", "present row time-block");
+            $(this).attr("class", "future row time-block");
         }
 
     });
@@ -116,5 +115,15 @@ saveToDo();
 // WHEN I refresh the page-THEN the saved events persist
 //loading input from local storage: timeblocks 
 $("#hour8 .description").val(localStorage.getItem("hour8"));
+$("#hour9 .description").val(localStorage.getItem("hour9"));
+$("#hour10 .description").val(localStorage.getItem("hour10"));
+$("#hour11 .description").val(localStorage.getItem("hour11"));
+$("#hour12 .description").val(localStorage.getItem("hour12"));
+$("#hour13 .description").val(localStorage.getItem("hour13"));
+$("#hour14 .description").val(localStorage.getItem("hour14"));
+$("#hour15 .description").val(localStorage.getItem("hour15"));
+$("#hour16 .description").val(localStorage.getItem("hour16"));
+$("#hour17 .description").val(localStorage.getItem("hour17"));
+$("#hour18 .description").val(localStorage.getItem("hour18"));
+$("#hour19 .description").val(localStorage.getItem("hour19"));
 $("#hour20 .description").val(localStorage.getItem("hour20"));
-//with 24 hour format or am-pm to display color?
