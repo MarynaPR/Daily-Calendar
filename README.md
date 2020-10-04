@@ -1,21 +1,27 @@
 # Daily-Calendar
-# 05 Third-Party APIs: Work Day Scheduler
+##Screenshots
 
-Create a simple calendar application that allows the user to save events for each hour of the day. This app will run in the browser and feature dynamically updated HTML and CSS powered by jQuery.
+![](./Assets/.png)
 
-You'll need to use the [Moment.js](https://momentjs.com/) library to work with date and time. Be sure to read the documentation carefully and concentrate on using Moment.js in the browser.
+This code creates a simple calendar application that allows the user to save events for each hour of the day. 
+This code was created for an employee with a busy schedule who is able to add important events to a daily planner for better time management. 
+This app will run in the browser and feature dynamically updated HTML and CSS powered by jQuery.
 
-## User Story
 
-```
-AS AN employee with a busy schedule
-I WANT to add important events to a daily planner
-SO THAT I can manage my time effectively
-```
+## Technology 
+*The [Moment.js](https://momentjs.com/) library was used to work with date and time.
+*HTML5
+*CSS
+*JavaScript
 
-## Acceptance Criteria
 
-```
+## Web Access
+
+Click here for the [Daily-Calendar] access ______ .
+This document was created by MarynaPR. Feel free to contact me with any questions via email pryadkamaryna@gmail.com
+
+
+
 GIVEN I am using a daily planner to create a schedule
 WHEN I open the planner
 THEN the current day is displayed at the top of the calendar
@@ -33,7 +39,6 @@ THEN the saved events persist
 
 The following animation demonstrates the application functionality:
 
-![day planner demo](./Assets/05-third-party-apis-homework-demo.gif)
 
 ## Review
 
@@ -43,5 +48,3 @@ You are required to submit the following for review:
 
 * The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
 
-- - -
-© 2020 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
