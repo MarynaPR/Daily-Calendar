@@ -42,6 +42,7 @@ $("button").on("click", function (event) {
     console.log($(this))
     var that = $(this);
     addToDo(event, that);
+
 })
 
 // WHEN I view the timeblocks for that day-THEN each timeblock is color coded to indicate whether it is in the past, present, or future
@@ -82,46 +83,48 @@ updateHourBlocks();
 
 // WHEN I click the save button for that timeblock-THEN the text for that event is saved in local storage
 var saveToDo = function () {
-    localStorage.setItem("toDo", JSON.stringify(toDo));
-    console.log(saveToDo);
-    console.log(toDo);
+    //     localStorage.setItem("toDo", JSON.stringify(toDo));
+    //     console.log(saveToDo);
+    //     console.log(toDo);
+
+    $(".saveBtn").on("click", function (event) {
+        console.log("saveBtn");
+        //event.preventDefault();//?prevents from reloading
+
+        var hour = $(this).parent().attr("id");
+        var textToDo = $(this).siblings(".textarea").val();
+
+        localStorage.setItem(hour, textToDo);
+        //console.log("textToDo");
+
+        localStorage.setItem("hour9", $("#hour9 .description").val());
+        localStorage.setItem("hour10", $("#hour10 .description").val());
+        localStorage.setItem("hour11", $("#hour11 .description").val());
+        localStorage.setItem("hour12", $("#hour12 .description").val());
+        localStorage.setItem("hour13", $("#hour13 .description").val());
+        localStorage.setItem("hour14", $("#hour14 .description").val());
+        localStorage.setItem("hour15", $("#hour15 .description").val());
+        localStorage.setItem("hour16", $("#hour16 .description").val());
+        localStorage.setItem("hour17", $("#hour17 .description").val());
+    });
+
 };
+
 saveToDo();
 
-$(".btn saveBtn").on("click", function () {
-    console.log("savebutton");
-    var hour = $(this).parent().attr("id");
-    var description = $(this).siblings(". textarea").val();
-
-    localStorage.setItem(hour, description);
-    console.log(hour);
-    console.log(description);
-
-});
-
 // WHEN I refresh the page-THEN the saved events persist
-
-//loading input from local storage: timeblocks 
-$("#hour8 .description").val(localStorage.getItem("hour8"));
-$("#hour9 .description").val(localStorage.getItem("hour9"));
-$("#hour10 .description").val(localStorage.getItem("hour10"));
-$("#hour11 .description").val(localStorage.getItem("hour11"));
-$("#hour12 .description").val(localStorage.getItem("hour12"));
-$("#hour13 .description").val(localStorage.getItem("hour13"));
-$("#hour14 .description").val(localStorage.getItem("hour14"));
-$("#hour15 .description").val(localStorage.getItem("hour15"));
-$("#hour16 .description").val(localStorage.getItem("hour16"));
-$("#hour17 .description").val(localStorage.getItem("hour17"));
-$("#hour18 .description").val(localStorage.getItem("hour18"));
-$("#hour19 .description").val(localStorage.getItem("hour19"));
-$("#hour20 .description").val(localStorage.getItem("hour20"));
-
-
-//add eventListeners first
-//document.addEventListener("DOMContentLoaded", () => {
-// console.log("test", document.querySelectorAll("button"))
-// document.querySelectorAll("button").addEventListener("click", addToDo);//whenever there's a click(any event) call the function based on that event
-// console.log("addToDo");
-//}); //add function to add toD
+//loading input from local storage: timeblocks on refresh-get items from the local storage:
+$(document).ready(function () {
+    console.log("show")
+    $("#hour9 .description").val(localStorage.getItem("#hour9"));
+    $("#hour10 .description").val(localStorage.getItem("hour10"));
+    $("#hour11 .description").val(localStorage.getItem("hour11"));
+    $("#hour12 .description").val(localStorage.getItem("hour12"));
+    $("#hour13 .description").val(localStorage.getItem("#hour13"));
+    $("#hour14 .description").val(localStorage.getItem("hour14"));
+    $("#hour15 .description").val(localStorage.getItem("hour15"));
+    $("#hour16 .description").val(localStorage.getItem("hour16"));
+    $("#hour17 .description").val(localStorage.getItem("hour17"));
+});
 
 
